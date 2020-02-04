@@ -3,13 +3,14 @@ ${BROWSER}       chrome
 ${ROOT}          http://172.17.0.1/core/
 ${PLATFORM}      linux
 ${VERSION}       latest
+${SELENIUM_URL}  http://localhost:4444
 
 *** Settings ***
 Library    SeleniumLibrary
 Library    PageObjectLibrary
-Library    ./Provisioning.py  admin  admin  http://localhost/core
-Library    ./LoginContext.py
-Library    ./listener.py
+Library    Provisioning.py  admin  admin  http://localhost/core
+Library    LoginContext.py
+Library    listener.py
 
 Suite Setup  set log level  DEBUG
 
@@ -26,7 +27,7 @@ Valid Login
 *** Keywords ***
 Open test browser
 	Open browser  ${ROOT}  ${BROWSER}
-	...  remote_url=http://localhost:4444/wd/hub
+	...  remote_url=${SELENIUM_URL}/wd/hub
 	...  desired_capabilities=browserName:${BROWSER},version:${VERSION},platform:${PLATFORM}
 
 Close all test browsers

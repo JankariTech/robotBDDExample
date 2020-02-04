@@ -1,5 +1,4 @@
 from PageObjectLibrary import PageObject, PageObjectLibraryKeywords
-from robot.api.deco import keyword
 
 
 class LoginPage(PageObject):
