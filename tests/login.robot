@@ -4,11 +4,13 @@ ${ROOT}          http://172.17.0.1/core/
 ${PLATFORM}      linux
 ${VERSION}       latest
 ${SELENIUM_URL}  http://localhost:4444
+${ADMIN_USERNAME}  admin
+${ADMIN_PASSWORD}  admin
 
 *** Settings ***
 Library    SeleniumLibrary
 Library    PageObjectLibrary
-Library    Provisioning.py  admin  admin  http://localhost/core
+Library    Provisioning.py  ${ADMIN_USERNAME}  ${ADMIN_PASSWORD}  ${ROOT}
 Library    LoginContext.py
 Library    listener.py
 
