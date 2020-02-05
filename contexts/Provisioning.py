@@ -1,6 +1,5 @@
 import requests
 from robot.api.deco import keyword
-from robot.api import logger
 
 
 class Provisioning:
@@ -21,8 +20,7 @@ class Provisioning:
 
         r = session.post(url=url, data=params)
         if r.status_code < 200 or r.status_code >= 400:
-            logger.console(r.status_code)
-            raise Exception("Failed while creating a new user")
+            raise Exception("Failed while creating a new user, Status :" + r.status_code)
         self.createdUsers[username] = {
             "password": password
         }
@@ -35,8 +33,7 @@ class Provisioning:
 
         r = session.delete(url=url)
         if r.status_code < 200 or r.status_code >= 400:
-            logger.console(r.status_code)
-            raise Exception("Failed while creating a new user")
+            raise Exception("Failed while creating a new user, Status :" + r.status_code)
 
     @keyword(name="Delete All Created Users")
     def delete_all_created_users(self):
