@@ -1,5 +1,6 @@
 import requests
 from robot.api.deco import keyword
+from robot.api import logger
 
 
 class Provisioning:
@@ -10,7 +11,7 @@ class Provisioning:
         self.backend_url = backend_url
         self.createdUsers = {}
 
-    @keyword(name="a user has been created with username ${username} and password ${password}")
+    @keyword(name="a user has been created with username '${username}' and password '${password}'")
     def create_user(self, username, password):
         url = self.backend_url + "/ocs/v2.php/cloud/users?format=json"
         params = {'userid': username, 'password': password}
@@ -20,6 +21,7 @@ class Provisioning:
 
         r = session.post(url=url, data=params)
         if r.status_code < 200 or r.status_code >= 400:
+            logger.console(r.status_code)
             raise Exception("Failed while creating a new user")
         self.createdUsers[username] = {
             "password": password
@@ -33,6 +35,7 @@ class Provisioning:
 
         r = session.delete(url=url)
         if r.status_code < 200 or r.status_code >= 400:
+            logger.console(r.status_code)
             raise Exception("Failed while creating a new user")
 
     @keyword(name="Delete All Created Users")
