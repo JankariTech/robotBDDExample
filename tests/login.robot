@@ -21,16 +21,16 @@ Test Teardown  Close all test browsers
 
 *** Test Cases ***
 Valid Login
-    Given a user has been created with username jasmine and password jasmine
-    And Go To Page  LoginPage
-    When User Logs In With Username jasmine And Password jasmine
+    Given a user has been created with username 'testuser' and password 'testpassword'
+    And User has browsed to the login page
+    When User Logs In With Username 'testuser' And Password 'testpassword'
     Then The current page should be  FilesPage
 
 *** Keywords ***
 Open test browser
-	Open browser  ${ROOT}  ${BROWSER}
-	...  remote_url=${SELENIUM_URL}/wd/hub
-	...  desired_capabilities=browserName:${BROWSER},version:${VERSION},platform:${PLATFORM}
+    Open browser  ${ROOT}  ${BROWSER}
+    ...  remote_url=${SELENIUM_URL}/wd/hub
+    ...  desired_capabilities=browserName:${BROWSER},version:${VERSION},platform:${PLATFORM}
 
 Close all test browsers
     Close all browsers

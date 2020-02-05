@@ -12,6 +12,8 @@ class LoginPage(PageObject):
         "login_form_xpath": "//form[@name='%s']"
     }
 
+    keywords = PageObjectLibraryKeywords()
+
     # def _is_current_page(self):
     #     # this site uses the same title for many pages,
     #     # so we can't rely on the default implementation
@@ -25,6 +27,9 @@ class LoginPage(PageObject):
     #         raise Exception(message)
     #     print("exist")
     #     return True
+
+    def browse_to_page(self):
+        self.keywords.go_to_page('LoginPage')
 
     def enter_username(self, username):
         """Type the given text into the username field """
