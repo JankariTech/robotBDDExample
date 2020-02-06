@@ -2,7 +2,6 @@
 1. Preconditions:                                                          
    * Python installation
    * Pip
-   * configure PATH
    * make virtual environment
 
 2. Installing robot framework with pip                                    
@@ -17,7 +16,7 @@
         $ rebot --version
         Rebot 3.0 (Python 2.7.10 on linux2)
 
-3. Upgrade
+3. Upgrade[optional]
    * pip install --upgrade robotframework
 
 4. Using robot and rebot scripts
@@ -28,13 +27,13 @@
         rebot output.xml                                                    
 5. Installing required libraries                                           
     * pip install requests robotframework-selenium2library  
-    * pip install --upgrade robotframework-pageobjectlibrary
+    * pip install requests robotframework-pageobjectlibrary
 
 6. Installation of IDE
-    * Install pycharm
+    * Install pycharm or any preferred IDE
   
 7. Import required libraries in the IDE
-    * To add the project interpreter, Go to `Files` => `Settings` => `Project: <your_Project>` => `Project Interpreter` and then add the python version available in your project directory.
+    * To add the project interpreter, Go to `Files` => `Settings` => `Project: <your_Project>` => `Project Interpreter` and then add the python version available through your virtual environment.
     * Also add the required libraries such as : `Selenium`, `robotframework-seleniumLibrary`, `robotframework-pageObjectLibrary`.
 
 8. Make a robot file inside a test folder eg: `robotBDDExample/test/login.robot`
